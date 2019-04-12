@@ -4,8 +4,12 @@
   "description": "A simple server node with mvc archiecture",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "nodemon server.js"
   },
   "author": "Lucas Van Driessche",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "hapi": "^18.1.0",
+    "hoek": "^6.1.3"
+  }
 }
