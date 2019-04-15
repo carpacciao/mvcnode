@@ -2,12 +2,13 @@
 
 const Hapi = require('hapi')
 const Hoek = require('hoek')
+require('dotenv').config({ silent: true });
 
 /* BASIC SERVER */
 const init = async () => {
   const server = new Hapi.Server({
-    port: 1337,
-    host: 'localhost'
+    port: process.env.SERVER_PORT,
+    host: process.env.SERVER_HOST
   });
 
   server.route({
