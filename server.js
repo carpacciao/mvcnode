@@ -2,6 +2,8 @@
 
 const Hapi = require('hapi')
 const Hoek = require('hoek')
+const mongoose = require('mongoose')
+
 require('dotenv').config({ silent: true });
 
 /* BASIC SERVER */
