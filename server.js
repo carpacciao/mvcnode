@@ -3,14 +3,15 @@
 const Hapi = require('hapi')
 const Hoek = require('hoek')
 const mongoose = require('mongoose')
+const Settings = require('./settings/settings')
 
-require('dotenv').config({ silent: true });
+console.log(Settings)
 
 /* BASIC SERVER */
 const init = async () => {
   const server = new Hapi.Server({
-    port: process.env.SERVER_PORT,
-    host: process.env.SERVER_HOST
+    port: Settings.SERVER.PORT,
+    host: Settings.SERVER.HOST
   });
 
   server.route({
