@@ -8,6 +8,8 @@ const Settings = require('./settings/settings')
 /* VALIDATE FOR JWT */
 const validate = async function (decoded, request) {
   // do your checks to see if the person is valid
+  // console.log(decoded)
+  // console.log(request)
   return {
     isValid: true
   }
@@ -27,15 +29,6 @@ const init = async () => {
     port: Settings.SERVER.PORT,
     host: Settings.SERVER.HOST
   });
-
-  server.route({
-    method: 'GET',
-    path: '/',
-    config: {auth: 'jwt'},
-    handler: (request, reply) => {
-      return true
-    },
-  })
   //auth jwt
   await server.register(require('hapi-auth-jwt2'));
   server.auth.strategy('jwt', 'jwt', {
@@ -45,7 +38,16 @@ const init = async () => {
       algorithms: ['HS256']
     } // pick a strong algorithm
   });
-   server.auth.default('jwt');
+  server.auth.default('jwt');
+
+  server.route({
+    method: 'GET',
+    path: '/',
+    config: {auth: 'jwt'},
+    handler: (request, reply) => {
+      return true
+    },
+  })
 
   await server.start()
   return server
