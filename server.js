@@ -1,9 +1,12 @@
 'use strict';
 
+const fs = require('fs')
 const Hapi = require('hapi')
 const Hoek = require('hoek')
 const mongoose = require('mongoose')
 const Settings = require('./settings/settings')
+require('colors')
+const envFile = './.env'
 
 /* VALIDATE FOR JWT */
 const validate = async function (decoded, request) {
@@ -53,8 +56,11 @@ const init = async () => {
   return server
 }
 
-init().then(server => {
-  console.log('Server is running at: ' + server.info.uri)
-}).catch(err => {
-  Hoek.assert(!err, err)
-})
+init()
+  .then(server => {
+    fs.existsSync(envFile) ? console.log('file .env find !'.green) : console.log('.env wasn\'t found, please create one and restart'.bgRed)
+    console.log('Server is running at: ' + server.info.uri)
+  })
+  .catch(err => {
+    Hoek.assert(!err, err)
+  })
