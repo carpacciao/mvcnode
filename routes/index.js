@@ -1,13 +1,12 @@
 'use strict'
+const Fs = require('fs')
+const Hoek = require('hoek')
+let routes = []
 
-module.exports = [
-  // routes here
-  {
-    method: 'GET',
-    path: '/',
-    // config: {auth: 'jwt'},
-    handler: (request, reply) => {
-      return reply.response({lol:'lel'})
-    }
-  }
-]
+Fs.readdirSync(__dirname)
+  .filter((file) => (file.indexOf('.') !== 0) && (file !== 'index.js'))
+  .forEach((file) => {
+    routes = routes.concat(require('./' + file))
+  })
+// console.log(routes)
+module.exports = routes

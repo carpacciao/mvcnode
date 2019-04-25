@@ -1,6 +1,6 @@
 'use strict';
 
-const fs = require('fs')
+const Fs = require('fs')
 const Hapi = require('hapi')
 const Hoek = require('hoek')
 const Settings = require('./settings/settings')
@@ -58,7 +58,7 @@ const init = async () => {
 
 init()
   .then(server => {
-    fs.existsSync(envFile) ? console.log('file .env find !'.green) : console.log('.env wasn\'t found, please create one and restart'.bgRed)
+    Fs.existsSync(envFile) ? console.log('file .env find !'.green) : console.log('.env wasn\'t found, please create one and restart'.bgRed)
     console.log('Server is running at: ' + server.info.uri)
   })
   .catch(err => {
