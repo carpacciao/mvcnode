@@ -28,16 +28,19 @@ const validate = async function (decoded, request) {
 };
 /* BASIC SERVER */
 const init = async () => {
-  // const server = new Hapi.Server(Settings.SERVER.HOST, Settings.SERVER.PORT, {cors: true})
+
   const server = new Hapi.Server({
     port: Settings.SERVER.PORT,
     host: Settings.SERVER.HOST,
     routes: {
       cors: Settings.SERVER.CORS
     }
-  });
-  //auth jwt
-  await server.register(require('hapi-auth-jwt2'));
+  })
+
+  //Plugins for HAPI JS
+  await server.register(require('hapi-auth-jwt2'))
+
+  //Auth Strategy
   server.auth.strategy('jwt', 'jwt', {
     key: 'NeverShareYourSecret', // Never Share your secret key
     validate: validate, // validate function defined above
@@ -45,7 +48,8 @@ const init = async () => {
       algorithms: ['HS256']
     } // pick a strong algorithm
   });
-  // server.auth.default('jwt');
+  // server.auth.default('jwt'); // All routes will be jwt auth
+
   server.route(Routes)
 
   await server.start()
