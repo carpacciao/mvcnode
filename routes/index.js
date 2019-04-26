@@ -9,4 +9,4 @@ Fs.readdirSync(__dirname)
     routes = routes.concat(require('./' + file))
   })
 // console.log(routes)
-module.exports = routes
+module.exports = routes 
