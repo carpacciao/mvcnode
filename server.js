@@ -8,6 +8,7 @@ const Routes = require('./routes/index')
 require('colors')
 const envFile = './.env'
 
+
 /* VALIDATE FOR JWT */
 const validate = async function (decoded, request) {
   // do your checks to see if the person is valid

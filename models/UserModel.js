@@ -16,5 +16,9 @@ const schema = new mongoose.Schema({
     type: String,
     unique: true,
     match: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+  },
+  timestamps: {
+    createdAt: 'created_at',
+    updatedAt: 'updated_at'
   }
 })
