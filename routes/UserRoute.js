@@ -1,16 +1,20 @@
 'use strict'
-const test = {
-  username: 'lucas',
-  password: 'oslm'
-}
+const User = require('../controllers/UserController')
+
 module.exports = [
   {
     method: 'GET',
     path: '/user/create',
     // config: {auth: 'jwt'},
     handler: (request, reply) => {
-      return reply.response(test)
+      return reply.response()
     }
+  },
+  {
+    method: 'GET',
+    path: '/lol',
+    // config: {auth: 'jwt'},
+    handler: User.lol
   },
   {
     method: 'GET',
