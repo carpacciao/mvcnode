@@ -9,5 +9,8 @@ module.exports = {
   destory: (request, reply) => {},
   lol: (request, reply) => {
     return reply.response(typeof User)
+  },
+  lel: (request, reply) => {
+    return reply.response(typeof User)
   }
 }

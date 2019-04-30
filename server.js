@@ -29,6 +29,12 @@ const validate = async function (decoded, request) {
 };
 /* BASIC SERVER */
 const init = async () => {
+  //db connect
+  try{
+    require('./settings/db')
+  }catch(err){
+    console.log(err)
+  }
 
   const server = new Hapi.Server({
     port: Settings.SERVER.PORT,
